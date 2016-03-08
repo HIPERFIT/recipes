@@ -1,5 +1,21 @@
 # Financial Recipes
 
+Running Jupyter Locally
+-----------------------
+
+The easiest is probably to [install
+Docker](https://docs.docker.com/engine/installation/) and use the provided
+`Dockerfile`.
+
+The `Makefile` is set up to do just this, so once you have `docker` installed,
+just type:
+
+    make
+
+And open your browser at address `localhost:8888`. The changes you make will be
+stored to the notebooks folder in the current directory, which you can then
+commit to git.
+
 Models and Pricing
 ------------------
 
