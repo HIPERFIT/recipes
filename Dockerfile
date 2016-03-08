@@ -1,8 +1,11 @@
 # Installs R, Jupyter Notebook, IRkernel (R for Jupyter), ggplot2+randtoolbox and our configuration file
 
 # Adapted from: https://github.com/IRkernel/IRkernel
-# Original author: Benjamin Abel <bbig26@gmail.com>
-# Modified by: Martin Dybdal <dybber@dybber.dk>
+# Original:
+#   Benjamin Abel <bbig26@gmail.com> 2015-10-17
+# Modifications:
+#   Martin Dybdal <dybber@dybber.dk> 2016-03-08
+#   Oleks <oleks@oleks.info> 2016-03-08
 #
 # Copyright (c) 2016, HIPERFIT
 # Copyright (c) 2014, Thomas Kluyver
