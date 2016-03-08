@@ -5,8 +5,8 @@ docker_build:
 
 run:
 	docker run -itp 8888:8888 \
-		-v $(PWD)/notebooks:/notebooks \
-	 	-v $(PWD)/.jupyter/:/home/jovyant/.jupyter/ \
+		-v $(PWD)/notebooks:/home/jovyan/work \
+	 	-v $(PWD)/.jupyter/:/home/jovyan/.jupyter/ \
 		hiperfit/recipes
 
 .PHONY: all docker_build run
