@@ -19,6 +19,4 @@ RUN Rscript -e "install.packages(c('rzmq','repr','IRkernel','IRdisplay'), repos 
 
 # Install other packages necessary for Financial Recipes
 RUN Rscript -e "install.packages(c('randtoolbox', 'ggplot2'), repos = c('http://irkernel.github.io/', getOption('repos')))"
-
 # Copy Jupyter configuration
-COPY jupyter_notebook_config.py /root/.jupyter/jupyter_notebook_config.py
