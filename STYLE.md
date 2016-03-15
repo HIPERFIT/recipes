@@ -12,10 +12,9 @@ the target audience to read. The target audience are:
 
 The emphasis is on the readers of Financial Recipes, as this is our primary
 audience. A style guide helps a reader along by encouraging a consistent writer
-style when it comes to R code. Granted, this style may not suit the artistry of
-the writer, and in select, well-founded cases, the writer *can* deviate from
-these requirements. It may perhaps even be worth-while to fix the style guide
-instead.
+style. Granted, this style may not suit the artistry of the writer, and in
+select, well-founded cases, the writer *can* deviate from these requirements.
+Consider fixing the style guide instead.
 
 Furthermore, this style guide is likely to be incomplete.
 
