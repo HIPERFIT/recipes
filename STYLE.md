@@ -37,7 +37,7 @@ An additional source of inspiration is the
 
 Avoid long lines. Long lines are hard to wrap your head around. A good rule of
 thumb is roughly 80 (monospaced) characters. See below for when to break your
-lines..
+lines.
 
 ## Indentation
 
