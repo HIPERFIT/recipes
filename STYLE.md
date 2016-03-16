@@ -10,11 +10,10 @@ the target audience to read. The target audience are:
 2. The writers of Financial Recipes.
 3. The future maintainers of Financial Recipes.
 
-The emphasis is on the readers of Financial Recipes, as this is our primary
-audience. A style guide helps a reader along by encouraging a consistent writer
-style. Granted, this style may not suit the artistry of the writer, and in
-select, well-founded cases, the writer *can* deviate from these requirements.
-Consider fixing the style guide instead.
+A style guide helps a reader along by encouraging a consistent writer style.
+This style may not suit your artistry, and in select, well-founded cases, you
+*can* deviate from this *guideline*, but consider fixing the style guide
+instead.
 
 Furthermore, this style guide is likely to be incomplete.
 
