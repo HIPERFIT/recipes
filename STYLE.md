@@ -30,7 +30,7 @@ What readers of Financial Recipes might expect of our R code:
   3. [MSU, ZOL851 R Style Guide](https://www.msu.edu/~idworkin/ZOL851_style_guide.html).
 
 An additional source of inspiration is the
-[C-RAN](https://cran.r-project.org/web/packages/).
+[CRAN](https://cran.r-project.org/web/packages/).
 
 ## Line Length
 
