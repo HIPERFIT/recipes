@@ -113,7 +113,7 @@ are easy to forget if you add another line in the future.
 ~~~ .R
 # Good
 if (opttype==1) {
-    result <- spot * exp(-q * timetomat)
+  result <- spot * exp(-q * timetomat)
 }
 
 # Bad
@@ -121,12 +121,12 @@ if (opttype==1) result <- exp(-q * timetomat) * pnorm(d1)
 
 # Bad
 if (opttype==1)
-    result <- exp(-q * timetomat) * pnorm(d1)
+  result <- exp(-q * timetomat) * pnorm(d1)
 
 # Bad
 if (opttype==1)
 {
-    result <- exp(-q * timetomat) * pnorm(d1)
+  result <- exp(-q * timetomat) * pnorm(d1)
 }
 ~~~
 
@@ -135,17 +135,17 @@ An `else` statement should always be surrounded by curly braces.
 ~~~ .R
 # Good
 if (opttype==1) {
-    result <- exp(-q * timetomat) * pnorm(d1)
+  result <- exp(-q * timetomat) * pnorm(d1)
 } else {
-    result <- (spot ^ 2) * exp((r + sigma ^ 2) * timetomat)
+  result <- (spot ^ 2) * exp((r + sigma ^ 2) * timetomat)
 }
 
 # Bad
 if (condition) {
-    one or more lines
+  one or more lines
 }
 else {
-    one or more lines
+  one or more lines
 }
 ~~~
 
