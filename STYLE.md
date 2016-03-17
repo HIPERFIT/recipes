@@ -50,102 +50,116 @@ Space out your code to make it feel less "cramped".
 
 Place spaces around binary operators (`=`, `+`, `-`, `<-`, etc.).
 
-    # Good
-    Btau <- (1 - exp(-kap * tau)) / kap
+~~~ .R
+# Good
+Btau <- (1 - exp(-kap * tau)) / kap
 
-    # Bad
-    Btau<-(1-exp(-kap*tau))/kap
+# Bad
+Btau<-(1-exp(-kap*tau))/kap
+~~~
 
 Always place a space after a comma, but never before it.
 
-    # Good
-    array(1:3, c(2, 4))
-    col1 <- sum(x[, 1])
-    rowl <- sum(x[1, ])
+~~~ .R
+# Good
+array(1:3, c(2, 4))
+col1 <- sum(x[, 1])
+rowl <- sum(x[1, ])
 
-    # Bad
-    array(1:3,c(2,4))
-    col1 <- sum(x[,1])
-    row1 <- sum(x[ ,1])
+# Bad
+array(1:3,c(2,4))
+col1 <- sum(x[,1])
+row1 <- sum(x[ ,1])
+~~~
 
 Place a space before a left parenthesis, except if in connection with a function
 call.
 
-    # Good
-    if (is.nan(x))
+~~~ .R
+# Good
+if (is.nan(x))
 
-    # Bad
-    if(is.nan(x))
+# Bad
+if(is.nan(x))
 
-    # Good
-    for (x in 1:nQ)
+# Good
+for (x in 1:nQ)
 
-    # Bad
-    for(x in 1:nQ)
+# Bad
+for(x in 1:nQ)
+~~~
 
 Add extra spacing to achieve more readable alignments.
 
-    # Good
-    plot(x    = x,
-         y    = y,
-         type = 'l',
-         col  = "blue",
-         ylim = c(0.7,1),
-         xlab = "time",
-         ylab = "price")
+~~~ .R
+# Good
+plot(x    = x,
+     y    = y,
+     type = 'l',
+     col  = "blue",
+     ylim = c(0.7,1),
+     xlab = "time",
+     ylab = "price")
 
-    # Bad
-    plot(x, y, type = 'l', col = "blue", ylim = c(0.7,1), xlab = "time", ylab = "price")
+# Bad
+plot(x, y, type = 'l', col = "blue", ylim = c(0.7,1), xlab = "time", ylab = "price")
+~~~
 
 # Curly Braces
 
 An opening curly brace goes on the same line. Do not omit curly braces, they
 are easy to forget if you add another line in the future.
 
-    # Good
-    if (opttype==1) {
-        result <- spot * exp(-q * timetomat)
-    }
+~~~ .R
+# Good
+if (opttype==1) {
+    result <- spot * exp(-q * timetomat)
+}
 
-    # Bad
-    if (opttype==1) result <- exp(-q * timetomat) * pnorm(d1)
+# Bad
+if (opttype==1) result <- exp(-q * timetomat) * pnorm(d1)
 
-    # Bad
-    if (opttype==1)
-        result <- exp(-q * timetomat) * pnorm(d1)
+# Bad
+if (opttype==1)
+    result <- exp(-q * timetomat) * pnorm(d1)
 
-    # Bad
-    if (opttype==1)
-    {
-        result <- exp(-q * timetomat) * pnorm(d1)
-    }
+# Bad
+if (opttype==1)
+{
+    result <- exp(-q * timetomat) * pnorm(d1)
+}
+~~~
 
 An `else` statement should always be surrounded by curly braces.
 
-    # Good
-    if (opttype==1) {
-        result <- exp(-q * timetomat) * pnorm(d1)
-    } else {
-        result <- (spot ^ 2) * exp((r + sigma ^ 2) * timetomat)
-    }
+~~~ .R
+# Good
+if (opttype==1) {
+    result <- exp(-q * timetomat) * pnorm(d1)
+} else {
+    result <- (spot ^ 2) * exp((r + sigma ^ 2) * timetomat)
+}
 
-    # Bad
-    if (condition) {
-        one or more lines
-    }
-    else {
-        one or more lines
-    }
+# Bad
+if (condition) {
+    one or more lines
+}
+else {
+    one or more lines
+}
+~~~
 
 ## Assignment
 
 Use `<-`, not `=`, for assignment.
 
-    # Good
-    x <- 5
+~~~ .R
+# Good
+x <- 5
 
-    # Bad
-    x = 5
+# Bad
+x = 5
+~~~
 
 ## Function Definitions and Function Calls
 
@@ -156,12 +170,14 @@ be set?
 If you need line breaks in your function definition or function call, break
 them after commas, and indent until the opening brace.
 
-    # Good
-    BlackScholesFormula  <- function (spot, timetomat, strike, r, sigma,
-                                      q = 0, opttype = 1, greektype = 1) {
+~~~ .R
+# Good
+BlackScholesFormula  <- function (spot, timetomat, strike, r, sigma,
+                                  q = 0, opttype = 1, greektype = 1) {
 
-    # Bad
-    BlackScholesFormula  <- function (spot, timetomat, strike, r, q = 0, sigma, opttype = 1, greektype = 1) {
+# Bad
+BlackScholesFormula  <- function (spot, timetomat, strike, r, q = 0, sigma, opttype = 1, greektype = 1) {
+~~~
 
 ## File Organization
 
@@ -170,4 +186,4 @@ them after commas, and indent until the opening brace.
 1. Author comment
 2. File description comment
 3. Function definitions
-4. Executed statements (e.g. `plot`)
+4. Executed statements (e.g., `plot`)
