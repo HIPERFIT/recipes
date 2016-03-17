@@ -141,11 +141,11 @@ if (opttype==1) {
 }
 
 # Bad
-if (condition) {
-  one or more lines
+if (opttype==1) {
+  result <- exp(-q * timetomat) * pnorm(d1)
 }
 else {
-  one or more lines
+  result <- (spot ^ 2) * exp((r + sigma ^ 2) * timetomat)
 }
 ~~~
 
