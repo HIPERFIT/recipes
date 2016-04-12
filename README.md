@@ -65,3 +65,13 @@ Notes on Parallelism
 - Vectorisation
 
 
+Related Work
+------------
+
+1. Paolo Brandimarte. _Numerical methods in finance and economics: a
+MATLAB-based introduction_. John Wiley & Sons, Inc., 2006. Available via REX:
+http://onlinelibrary.wiley.com.ep.fjernadgang.kb.dk/book/10.1002/0470080493
+
+2. Seydel, Rüdiger. _Tools for computational finance_. Berlin: Springer, 2006.
+Available via REX:
+http://link.springer.com.ep.fjernadgang.kb.dk/book/10.1007%2F3-540-27926-1
