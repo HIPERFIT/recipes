@@ -6,7 +6,7 @@ docker_build:
 	docker build -t hiperfit/recipes .
 
 run:
-	docker run -itp $(PORT):$(PORT) \
+	docker run -itp $(JUPYTER_PORT):$(JUPYTER_PORT) \
 	  --env-file ./config \
 		-v $(PWD)/notebooks:/home/jovyan/work \
 	 	-v $(PWD)/.jupyter/:/home/jovyan/.jupyter/ \

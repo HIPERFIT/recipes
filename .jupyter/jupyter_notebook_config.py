@@ -3,8 +3,8 @@ import sys
 
 from jupyter_core.paths import jupyter_config_dir
 
-c.NotebookApp.ip = os.environ.get('IPADDRESS', '*')
-c.NotebookApp.port = int(os.environ.get('PORT', 8888))
+c.NotebookApp.ip = os.environ.get('JUPYTER_IP', '*')
+c.NotebookApp.port = int(os.environ.get('JUPYTER_PORT', 8888))
 c.NotebookApp.open_browser = False
 
 # Password protection
