@@ -1,4 +1,4 @@
-PORT=8888
+include ./config
 
 all: docker_build run
 
@@ -7,6 +7,7 @@ docker_build:
 
 run:
 	docker run -itp $(PORT):$(PORT) \
+	  --env-file ./config \
 		-v $(PWD)/notebooks:/home/jovyan/work \
 	 	-v $(PWD)/.jupyter/:/home/jovyan/.jupyter/ \
 		hiperfit/recipes
