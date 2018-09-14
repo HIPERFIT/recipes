@@ -42,20 +42,39 @@ let lsmc [paths] [steps] (S:[paths][steps]real) (r:real) =
                   in [1f64, dummy, dummy*dummy]) pickedpaths
      let Xt = A.transpose X
      let b = M.matvecmul_row (M.inv (M.matmul Xt X)) (M.matvecmul_row Xt Y)
-     --let b = M.matvecmul (M.matmul (M.inv (M.matmul Xt X)) Xt) Y
-     let (P,_) =
-        loop (P,i) = (P,0) while i < numpicked do
-          let j = pickedpaths[i]
-          let payoff = payoffFun(S[j,h])
-          let a = [1f64, S[j,h], S[j,h]*S[j,h]]
-          let c = M.dotprod a b
-          let P = if c < payoff then
-                     P with [j] <- (replicate steps 0f64)
-                  else P
-          let P = if c < payoff then P with [j,h] <- payoff
-                  else P
-          in (P,i+1)
-    in (P,h-1)
+
+     let payoffs = map (\i ->
+                        let j = pickedpaths[i]
+                        in payoffFun(S[j,h])) (iota numpicked)
+
+     let cs = map (\i -> let j = pickedpaths[i]
+                         let a = [1f64, S[j,h], S[j,h]*S[j,h]]
+                         in M.dotprod a b) (iota numpicked)
+
+     -- let (P,_) =
+     --    loop (P,i) = (P,0) while i < numpicked do
+     --      let j = pickedpaths[i]
+     --      let P = if cs[i] < payoffs[i] then
+     --                 P with [j] <- (replicate steps 0f64)
+     --              else P
+     --      let P = if cs[i] < payoffs[i] then P with [j,h] <- payoffs[i]
+     --              else P
+     --      in (P,i+1)
+
+     let G = map (\ik ->
+                  let i = ik / steps
+                  let k = ik % steps
+                  let j = pickedpaths[i]
+                  let jk = steps*j+k
+                  in if cs[i] < payoffs[i] then
+                       if k==h && 1 <= k && k <= steps-2 then (jk,payoffs[i])
+                       else (jk,0.0f64)
+                     else (-1,0.0f64)) (iota (steps*numpicked))
+     let (inds,vals) = unzip G
+     let M = paths * steps
+     let P : [M]real = scatter (copy(flatten P)) inds vals
+     let P : [paths][steps]real = unflatten paths steps P
+     in (P,h-1)
   let Z = map (\j ->
                let xs = map (\i -> disc[i]*P[j,i+1]) (iota (steps-1))
                in reduce (+) 0f64 xs) (iota paths)

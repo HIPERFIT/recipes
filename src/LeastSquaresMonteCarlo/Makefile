@@ -10,3 +10,11 @@ clean:
 
 %-opencl.exe: %.fut
 	futhark-opencl -o $@ $<
+
+.PHONY: sync
+sync:
+	futhark-pkg sync
+
+.PHONY: sync
+realclean: clean
+	rm -rf lib
