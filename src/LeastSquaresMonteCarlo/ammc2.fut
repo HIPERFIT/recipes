@@ -14,8 +14,9 @@ module M = mk_linalg f64
 
 type real = f64
 
-let strike = 1.1f64
-let payoffFun (s:real) : real = f64.max (strike-s) 0f64
+let payoffFun (s:real) : real =
+  let strike = 1.1f64
+  in f64.max (strike-s) 0f64
 
 let mean [n] (xs:[n]f64) = reduce (+) 0f64 xs / r64(n)
 
@@ -43,41 +44,28 @@ let lsmc [paths] [steps] (S:[paths][steps]real) (r:real) =
      let Xt = A.transpose X
      let b = M.matvecmul_row (M.inv (M.matmul Xt X)) (M.matvecmul_row Xt Y)
 
-     let payoffs = map (\i ->
-                        let j = pickedpaths[i]
-                        in payoffFun(S[j,h])) (iota numpicked)
-
-     let cs = map (\i -> let j = pickedpaths[i]
-                         let a = [1f64, S[j,h], S[j,h]*S[j,h]]
-                         in M.dotprod a b) (iota numpicked)
-
-     -- let (P,_) =
-     --    loop (P,i) = (P,0) while i < numpicked do
-     --      let j = pickedpaths[i]
-     --      let P = if cs[i] < payoffs[i] then
-     --                 P with [j] <- (replicate steps 0f64)
-     --              else P
-     --      let P = if cs[i] < payoffs[i] then P with [j,h] <- payoffs[i]
-     --              else P
-     --      in (P,i+1)
-
-     let G = map (\ik ->
-                  let i = ik / steps
-                  let k = ik % steps
-                  let j = pickedpaths[i]
-                  let jk = steps*j+k
-                  in if cs[i] < payoffs[i] then
-                       if k==h && 1 <= k && k <= steps-2 then (jk,payoffs[i])
-                       else (jk,0.0f64)
-                     else (-1,0.0f64)) (iota (steps*numpicked))
-     let (inds,vals) = unzip G
-     let M = paths * steps
-     let P : [M]real = scatter (copy(flatten P)) inds vals
-     let P : [paths][steps]real = unflatten paths steps P
+     let (payoffs,cs) =
+       unzip <| map (\i -> let j = pickedpaths[i]
+                           let payoff = payoffFun(S[j,h])
+                           let a = [1f64, S[j,h], S[j,h]*S[j,h]]
+                           in (payoff, M.dotprod a b)) (iota numpicked)
+     let (inds,vals) =
+       unzip <| map (\ik ->
+                     let i = ik / steps
+                     let k = ik % steps
+                     let j = pickedpaths[i]
+                     let jk = steps*j+k
+                     in if cs[i] < payoffs[i] then
+                          if k==h && 1 <= k && k <= steps-2 then
+                            (jk,payoffs[i])
+                          else (jk,0.0)
+                        else (-1,0.0)) (iota (steps*numpicked))
+     let P = unflatten paths steps <| scatter (copy(flatten P)) inds vals
      in (P,h-1)
+
   let Z = map (\j ->
                let xs = map (\i -> disc[i]*P[j,i+1]) (iota (steps-1))
-               in reduce (+) 0f64 xs) (iota paths)
+               in reduce (+) 0.0 xs) (iota paths)
   in mean Z
 
 -- Paper Example 1
